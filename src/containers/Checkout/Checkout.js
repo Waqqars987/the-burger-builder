@@ -4,24 +4,43 @@ import ContactData from './ContactData/ContactData';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 class Checkout extends Component {
-	state = {
-		ingredients : null,
-		totalPrice  : 0
-	};
+	// state = {
+	// 	ingredients : null,
+	// 	totalPrice  : 0
+	// };
 
-	componentWillMount () {
-		const query = new URLSearchParams(this.props.location.search);
-		const ingredients = {};
-		let price = 0;
-		for (let param of query.entries()) {
+	// componentWillMount () {
+	// 	const query = new URLSearchParams(this.props.location.search);
+	// 	const ingredients = {};
+	// 	let price = 0;
+	// 	for (let param of query.entries()) {
+	// 		if (param[0] === 'price') {
+	// 			price = param[1];
+	// 		} else {
+	// 			ingredients[param[0]] = +param[1];
+	// 		}
+	// 	}
+	// 	this.setState({ ingredients: ingredients, totalPrice: price });
+	// }
+
+	// Alternative for componentWillMount
+	initState = () => {
+		const queryInit = new URLSearchParams(this.props.location.search);
+		const ingredientsInit = {};
+		let priceInit = 0;
+		for (let param of queryInit.entries()) {
 			if (param[0] === 'price') {
-				price = param[1];
+				priceInit = param[1];
 			} else {
-				ingredients[param[0]] = +param[1];
+				ingredientsInit[param[0]] = +param[1];
 			}
 		}
-		this.setState({ ingredients: ingredients, totalPrice: price });
-	}
+		return {
+			ingredients : ingredientsInit,
+			totalPrice  : priceInit
+		};
+	};
+	state = this.initState();
 
 	checkoutCancelledHandler = () => {
 		this.props.history.goBack();
