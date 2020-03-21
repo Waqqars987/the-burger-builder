@@ -34,6 +34,7 @@ class BurgerBuilder extends Component {
 		if (this.props.isAuthenticated) {
 			this.setState({ purchasing: true });
 		} else {
+			this.props.onSetAuthRedirectPath('/checkout');
 			this.props.history.push('/auth');
 		}
 	};
@@ -55,7 +56,7 @@ class BurgerBuilder extends Component {
 			disabledInfo[key] = disabledInfo[key] <= 0;
 		}
 		let orderSummary = null;
-		let burger = this.props.error ? <p>Ingredients cannot be loaded!</p> : <Spinner />;
+		let burger = this.props.error ? <h1>Ingredients cannot be loaded!</h1> : <Spinner />;
 		if (this.props.ings) {
 			burger = (
 				<Aux>
@@ -103,10 +104,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onIngredientAdded   : (ingName) => dispatch(actions.addIngredient(ingName)),
-		onIngredientRemoved : (ingName) => dispatch(actions.removeIngredient(ingName)),
-		onInitIngredients   : () => dispatch(actions.initIngredients()),
-		onInitPurchase      : () => dispatch(actions.purchaseInit())
+		onIngredientAdded     : (ingName) => dispatch(actions.addIngredient(ingName)),
+		onIngredientRemoved   : (ingName) => dispatch(actions.removeIngredient(ingName)),
+		onInitIngredients     : () => dispatch(actions.initIngredients()),
+		onInitPurchase        : () => dispatch(actions.purchaseInit()),
+		onSetAuthRedirectPath : (path) => dispatch(actions.setAuthRedirectPath(path))
 	};
 };
 
