@@ -56,7 +56,11 @@ export class BurgerBuilder extends Component {
 			disabledInfo[key] = disabledInfo[key] <= 0;
 		}
 		let orderSummary = null;
-		let burger = this.props.error ? <h1>Ingredients cannot be loaded!</h1> : <Spinner />;
+		let burger = this.props.error ? (
+			<h1 style={{ textAlign: 'center' }}>Ingredients cannot be loaded!</h1>
+		) : (
+			<Spinner />
+		);
 		if (this.props.ings) {
 			burger = (
 				<Aux>

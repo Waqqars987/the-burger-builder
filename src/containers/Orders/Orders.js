@@ -14,9 +14,13 @@ class Orders extends Component {
 	render () {
 		let orders = <Spinner />;
 		if (!this.props.loading) {
-			orders = this.props.orders.map((order) => {
-				return <Order key={order.id} ingredients={order.ingredients} price={order.price} />;
-			});
+			if (this.props.orders.length > 0) {
+				orders = this.props.orders.map((order) => {
+					return <Order key={order.id} ingredients={order.ingredients} price={order.price} />;
+				});
+			} else {
+				orders = <h1 style={{ textAlign: 'center' }}>You haven't placed any orders yet!</h1>;
+			}
 		}
 		return <div>{orders}</div>;
 	}
