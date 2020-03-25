@@ -118,10 +118,10 @@ class Auth extends Component {
 				{errorMessage}
 				<form onSubmit={this.submitHandler}>
 					{form}
-					<Button btnType='Success'>{this.state.isSingup ? 'SIGNUP' : 'SIGNIN'}</Button>
+					<Button btnType='Success'>{this.state.isSingup ? 'SIGN UP' : 'SIGN IN'}</Button>
 				</form>
 				<Button btnType='Danger' clicked={this.switchAuthModeHandler}>
-					SWITCH TO {this.state.isSingup ? 'SIGNIN' : 'SIGNUP'}
+					SWITCH TO {this.state.isSingup ? 'SIGN IN' : 'SIGN UP'}
 				</Button>
 			</div>
 		);
