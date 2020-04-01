@@ -5,6 +5,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Logout from './containers/Auth/Logout/Logout';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
+import Spinner from './components/UI/Spinner/Spinner';
 
 const Checkout = React.lazy(() => {
 	return import('./containers/Checkout/Checkout');
@@ -51,7 +52,7 @@ const app = props => {
 	return (
 		<div>
 			<Layout>
-				<Suspense fallback={<p>Loading...</p>}>{routes}</Suspense>
+				<Suspense fallback={<Spinner />}>{routes}</Suspense>
 			</Layout>
 		</div>
 	);
