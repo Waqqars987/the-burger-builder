@@ -23,6 +23,10 @@
 	color: #944317;
 }
 
+.Primary {
+	color: blueviolet;
+}
+
 .Button:disabled {
 	color: #ccc;
 	cursor: not-allowed;

@@ -7,17 +7,11 @@ import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
 import Spinner from './components/UI/Spinner/Spinner';
 
-const Checkout = React.lazy(() => {
-	return import('./containers/Checkout/Checkout');
-});
+const Checkout = React.lazy(() => import('./containers/Checkout/Checkout'));
 
-const Orders = React.lazy(() => {
-	return import('./containers/Orders/Orders');
-});
+const Orders = React.lazy(() => import('./containers/Orders/Orders'));
 
-const Auth = React.lazy(() => {
-	return import('./containers/Auth/Auth');
-});
+const Auth = React.lazy(() => import('./containers/Auth/Auth'));
 
 const app = props => {
 	const { onTryAutoSignup } = props;

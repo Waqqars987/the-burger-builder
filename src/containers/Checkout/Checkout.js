@@ -1,15 +1,17 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import ContactData from './ContactData/ContactData';
+import React, { useState } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 
 const checkout = props => {
+	const [ isContinued, setIsContinued ] = useState(false);
 	const checkoutCancelledHandler = () => {
 		props.history.goBack();
 	};
 
 	const checkoutContinuedHandler = () => {
+		setIsContinued(true);
 		props.history.replace('/checkout/contact-data');
 	};
 
@@ -20,12 +22,15 @@ const checkout = props => {
 		summary = (
 			<div>
 				{purchasedRedirect}
-				<CheckoutSummary
-					ingredients={props.ings}
-					checkoutCancelled={checkoutCancelledHandler}
-					checkoutContinued={checkoutContinuedHandler}
-				/>
-				<Route path={props.match.path + '/contact-data'} component={ContactData} />
+				{isContinued === false ? (
+					<CheckoutSummary
+						ingredients={props.ings}
+						checkoutCancelled={checkoutCancelledHandler}
+						checkoutContinued={checkoutContinuedHandler}
+					/>
+				) : (
+					<Route path={props.match.path + '/contact-data'} component={ContactData} />
+				)}
 			</div>
 		);
 	}

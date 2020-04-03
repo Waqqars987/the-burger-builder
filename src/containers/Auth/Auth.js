@@ -120,7 +120,7 @@ const auth = props => {
 				{form}
 				<Button btnType='Success'>{isSingup ? 'SIGNUP' : 'SIGNIN'}</Button>
 			</form>
-			<Button btnType='Danger' clicked={switchAuthModeHandler}>
+			<Button btnType='Primary' clicked={switchAuthModeHandler}>
 				SWITCH TO {isSingup ? 'SIGNIN' : 'SIGNUP'}
 			</Button>
 		</div>

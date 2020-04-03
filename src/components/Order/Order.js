@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Order.css';
 
-const order = (props) => {
+const order = props => {
 	const ingredients = [];
 	for (let ingredientName in props.ingredients) {
 		ingredients.push({
@@ -9,7 +9,7 @@ const order = (props) => {
 			amount : props.ingredients[ingredientName]
 		});
 	}
-	const ingredientOutput = ingredients.map((ig) => {
+	const ingredientOutput = ingredients.map(ig => {
 		return (
 			<span
 				style={{
