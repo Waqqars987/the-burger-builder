@@ -24,11 +24,9 @@ export function* authUserSaga(action) {
 		password: action.password,
 		returnSecureToken: true,
 	};
-	let url =
-		'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=<Firebase API Key>';
+	let url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
 	if (!action.isSignup) {
-		url =
-			'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=<Firebase API Key>';
+		url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
 	}
 	try {
 		const response = yield axios.post(url, authData);
