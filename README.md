@@ -1,5 +1,5 @@
 # the-burger-builder
-The Burger Builder React App
+The Burger Builder React App (Redux Saga)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
