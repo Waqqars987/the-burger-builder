@@ -123,3 +123,5 @@ dist
 .env.production.local
 
 .vscode
+
+yarn.lock
